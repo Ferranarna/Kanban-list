@@ -1,0 +1,21 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+__pycache__/
+.venv/
+.uv/
+*.py[cod]
+
+# Virtual environments
+.venv
+
+# Docker / DB
+mysql_data/
+.env
+
+# VS Code
+.vscode/

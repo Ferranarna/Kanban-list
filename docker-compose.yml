@@ -1,0 +1,14 @@
+services:
+  database:          # Nombre del servicio
+    image: mysql:8.0 # La "foto" oficial de MySQL
+    restart: always  # Si se cae o reinicias el PC, se levanta solo
+    environment:
+      - MYSQL_DATABASE=app_db
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3307:3306"  # Conexión Exterior:Interior
+    volumes:
+      - db_data:/var/lib/mysql # Persistencia de datos
+
+volumes:
+  db_data:           # Docker gestiona este espacio de disco
