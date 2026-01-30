@@ -7,7 +7,7 @@ up:
 	$(DOCKER_COMPOSE) up -d
 
 down:
-	$(DOCKER_COMPOSE) down
+	$(DOCKER_COMPOSE) down -v
 
 restart:
 	$(DOCKER_COMPOSE) down && $(DOCKER_COMPOSE) up -d
