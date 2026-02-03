@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional
-from src.domain.entities.epic import Epic
 from src.domain.entities.task import Task
 
 class TaskRepository(ABC):
@@ -36,6 +35,6 @@ class TaskRepository(ABC):
         pass
 
     @abstractmethod
-    def get_count_by_task_id(self, task_id: int) -> int:
-        """Retrieve the count of subtasks associated with a specific task ID"""
+    def get_count_by_epic_id(self, epic_id: int) -> int:
+        """Get the count of tasks associated with a specific epic ID"""
         pass

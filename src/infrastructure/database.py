@@ -1,4 +1,4 @@
-from sqlalchemy import create_backend, create_engine
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 # URL de conexión: mysql+driver://usuario:password@host:puerto/nombre_db

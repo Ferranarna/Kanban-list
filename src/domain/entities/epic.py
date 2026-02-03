@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
-from datetime import datetimefrom typing import Optional
+from datetime import datetime
+from typing import Optional
 from enum import Enum
 
 class EpicStatus(Enum):

@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
-from datetime import datetimefrom typing import Optional
-from enum import enum
+from datetime import datetime
+from typing import Optional
+from enum import Enum
 
 class ProjectStatus(Enum):
     ACTIVE = "active"
@@ -10,8 +11,8 @@ class ProjectStatus(Enum):
 
 @dataclass
 class Project:
-    id: Optional[int] = None
     name: str
+    id: Optional[int] = None
     description: Optional[str] = None
     start_date: datetime = field(default_factory=datetime.now)
     updated_at: datetime = field(default_factory=datetime.now)
