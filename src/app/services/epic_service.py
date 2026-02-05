@@ -1,5 +1,5 @@
 from typing import List, Optional
-from domain.entities.epic import Epic, EpicStatus
+from src.domain.entities.epic import Epic, EpicStatus
 from src.domain.repositories.project_repository import ProjectRepository
 from src.domain.repositories.epic_repository import EpicRepository
 

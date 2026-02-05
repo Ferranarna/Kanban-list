@@ -1,5 +1,5 @@
 from typing import List, Optional
-from domain.entities.task import Task, TaskStatus
+from src.domain.entities.task import Task, TaskStatus
 from src.domain.repositories.task_repository import TaskRepository
 from src.domain.repositories.epic_repository import EpicRepository
 
