@@ -25,7 +25,7 @@ class SQLAlchemyProjectRepository(ProjectRepository):
             end_date=db_model.end_date if db_model.end_date else None # type: ignore
         )
 
-    def put(self, project: Project) -> Project:
+    def add(self, project: Project) -> Project:
         # 1. Convertimos la Entidad de Dominio en un Modelo de DB
         db_project = ProjectModel(
             name=project.name,

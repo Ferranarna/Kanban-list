@@ -28,7 +28,7 @@ class SQLAlchemyTaskRepository(TaskRepository):
             priority=TaskPriority(db_model.priority) if db_model.priority else None, # type: ignore
         )
 
-    def put(self, task: Task) -> Task:
+    def add(self, task: Task) -> Task:
         # 1. Convertimos la Entidad de Dominio en un Modelo de DB
         db_task = TaskModel(
             epic_id=task.epic_id,

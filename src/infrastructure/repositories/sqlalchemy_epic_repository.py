@@ -26,7 +26,7 @@ class SQLAlchemyEpicRepository(EpicRepository):
             end_date=db_model.end_date if db_model.end_date else None # type: ignore
         )
 
-    def put(self, epic: Epic) -> Epic:
+    def add(self, epic: Epic) -> Epic:
         # 1. Convertimos la Entidad de Dominio en un Modelo de DB
         db_epic = EpicModel(
             project_id=epic.project_id,
