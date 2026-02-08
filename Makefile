@@ -16,4 +16,4 @@ logs:
 	$(DOCKER_COMPOSE) logs -f
 
 run:
-	uv run uvicorn src.app.main:app --reload
+	uv run uvicorn main:app --reload
