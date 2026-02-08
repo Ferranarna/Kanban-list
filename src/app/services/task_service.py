@@ -52,3 +52,31 @@ class TaskService:
         # Actualizamos la tarea
         task.id = task_id
         return self.task_repository.update(task)
+    
+    def delete_task(self, task_id: int):
+        # --- REGLA DE NEGOCIO 6: Verificar que la tarea exista antes de eliminar ---
+        existing_task = self.get_task_by_id(task_id)
+        if not existing_task:
+            raise ValueError(f"The task with ID {task_id} does not exist.")
+        
+        # --- REGLA DE NEGOCIO 7: No eliminar si la tarea está COMPLETED ---
+        if existing_task.status == TaskStatus.DONE:
+            raise ValueError(f"The task with ID {task_id} cannot be deleted because its status is DONE.")
+
+        return self.task_repository.delete(task_id)
+    
+    def get_tasks_by_epic_id(self, epic_id: int) -> List[Task]:
+        #  --- REGLA DE NEGOCIO 8: Verificar que la épica exista ---
+        epic = self.epic_repository.get_by_id(epic_id)
+        if not epic:
+            raise ValueError(f"The epic with ID {epic_id} does not exist.")
+        
+        return self.task_repository.get_by_epic_id(epic_id)
+    
+    def get_count_tasks_by_epic_id(self, epic_id: int) -> int:
+        #  --- REGLA DE NEGOCIO 9: Verificar que la épica exista ---
+        epic = self.epic_repository.get_by_id(epic_id)
+        if not epic:
+            raise ValueError(f"The epic with ID {epic_id} does not exist.")
+        
+        return self.task_repository.get_count_by_epic_id(epic_id)

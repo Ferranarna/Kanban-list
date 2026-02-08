@@ -57,3 +57,10 @@ def update_project(project_id: int, project_data: ProjectCreate, service: Projec
         return updated
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
+    
+@router.delete("/{project_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_project(project_id: int, service: ProjectServiceDep):
+    deleted = service.delete_project(project_id)
+    if not deleted:
+        raise HTTPException(status_code=404, detail="Project not found")
+    return None  # FastAPI interpretará esto como una respuesta vacía con código 204

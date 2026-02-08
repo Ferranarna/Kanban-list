@@ -73,3 +73,10 @@ class EpicService:
         
         return self.epic_repository.get_by_project_id(project_id)
     
+    def count_epics_by_project_id(self, project_id: int) -> int:
+        #  --- REGLA DE NEGOCIO 9: Verificar que el proyecto exista ---
+        project = self.project_repository.get_by_id(project_id)
+        if not project:
+            raise ValueError(f"The project with ID {project_id} does not exist.")
+        
+        return self.epic_repository.get_count_by_project_id(project_id)
