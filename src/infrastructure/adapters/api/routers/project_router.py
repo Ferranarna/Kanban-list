@@ -20,9 +20,16 @@ def create_project(project_data: ProjectCreate, service: ProjectServiceDep):
         # El router extrae los datos del Schema y se los pasa al servicio
         return service.create_project(
             name=project_data.name, 
-            description=project_data.description
+            description=project_data.description,
+            start_date=project_data.start_date,
+            end_date=project_data.end_date,
+            finalization_criteria=project_data.finalization_criteria,
+            status=project_data.status,
+            budget=project_data.budget
         )
     except ValueError as e:
+        import traceback
+        traceback.print_exc()
         # Si el servicio lanza un error de negocio, lo convertimos en una respuesta HTTP con código 400
         raise HTTPException(status_code=400, detail=str(e))
 

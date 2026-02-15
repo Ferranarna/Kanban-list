@@ -86,8 +86,9 @@ class SQLAlchemyProjectRepository(ProjectRepository):
     
     def get_all(self) -> Optional[List[Project]]:
         db_projects = self.db.query(ProjectModel).all()
-        if not db_projects:
-            raise ValueError("No projects found")
+        if len(db_projects) != 0:
+            if not db_projects:
+                raise ValueError("No projects found")
         
         #Retornamos una lista de db_project como hemos tipado en la función
         return [self._to_entity(db_project) for db_project in db_projects]

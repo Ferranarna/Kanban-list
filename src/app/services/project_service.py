@@ -1,4 +1,5 @@
 from typing import List, Optional
+from datetime import datetime
 from src.domain.entities.project import Project, ProjectStatus
 from src.domain.repositories.project_repository import ProjectRepository
 from src.domain.repositories.epic_repository import EpicRepository
@@ -9,7 +10,7 @@ class ProjectService:
         self.project_repository = project_repository
         self.epic_repository = epic_repository
 
-    def create_project(self, name: str, description: Optional[str] = None) -> Project:
+    def create_project(self, name: str, description: Optional[str] = None, start_date: Optional[datetime] = None, end_date: Optional[datetime] = None, finalization_criteria: Optional[str] = None, status=ProjectStatus.ACTIVE, budget: Optional[float] = None) -> Project:
         # --- REGLA DE NEGOCIO 1: No nombres duplicados ---
         # Se busca si ya existe un proyecto con ese nombre (ignorando mayúsculas/minúsculas)
         existing_projects = self.project_repository.get_all()
@@ -21,7 +22,7 @@ class ProjectService:
             raise ValueError("The project name must be at least 3 characters long.")
 
         # Creamos la entidad y la mandamos al "puerto"
-        new_project = Project(name=name, description=description)
+        new_project = Project(name=name, description=description, start_date=start_date, end_date=end_date, finalization_criteria=finalization_criteria, status=status, budget=budget)
         return self.project_repository.add(new_project)
 
     def delete_project(self, project_id: int):

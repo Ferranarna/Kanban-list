@@ -14,16 +14,17 @@ class Project:
     name: str
     id: Optional[int] = None
     description: Optional[str] = None
-    start_date: datetime = field(default_factory=datetime.now)
-    updated_at: datetime = field(default_factory=datetime.now)
+    start_date: Optional[datetime] = field(default_factory=datetime.now)
+    updated_at: Optional[datetime] = field(default_factory=datetime.now)
     end_date: Optional[datetime] = None
     finalization_criteria: Optional[str] = None
     status: ProjectStatus = ProjectStatus.ACTIVE
     budget: Optional[float] = None
 
     def __post_init__(self):
-        if self.end_date and self.end_date < self.start_date:
-            raise ValueError("end_date cannot be earlier than start_date")
+        if self.end_date is not None and self.start_date is not None:
+            if self.end_date < self.start_date:
+                raise ValueError("end_date cannot be earlier than start_date")
     
     def update_info (self, name: str, description: Optional[str] = None, end_date: Optional[datetime] = None, 
                      finalization_criteria: Optional[str] = None, 
