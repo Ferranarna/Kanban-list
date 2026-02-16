@@ -43,7 +43,7 @@ class ProjectService:
     def get_all_projects(self) -> List[Project]:
         return self.project_repository.get_all()
     
-    def update_project(self, project: Project, project_id: int) -> Project:
+    def update_project(self, project_id: int, project: Project) -> Project:
 
         # --- REGLA DE NEGOCIO 5: Verificar que el proyecto exista ---
         existing_project = self.get_project_by_id(project_id)
@@ -67,4 +67,4 @@ class ProjectService:
                 raise ValueError(f"The project with ID {project_id} cannot be updated because its status is COMPLETED.")
 
         # Actualizamos el proyecto
-        return self.project_repository.update(project)
+        return self.project_repository.update(project_id, project)

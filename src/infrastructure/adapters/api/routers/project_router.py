@@ -58,7 +58,7 @@ def update_project(project_id: int, project_data: ProjectCreate, service: Projec
             description=project_data.description
         )
         
-        updated = service.update_project(project_entity, project_id)
+        updated = service.update_project(project_id, project_entity)
         if not updated:
             raise HTTPException(status_code=404, detail="Project not found")
         return updated

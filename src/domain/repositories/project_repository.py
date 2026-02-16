@@ -10,7 +10,7 @@ class ProjectRepository(ABC):
         pass
     
     @abstractmethod
-    def update(self, project: Project) -> Project:
+    def update(self, project_id: int, project: Project) -> Project:
         """Update an existing Project"""
         pass
 
